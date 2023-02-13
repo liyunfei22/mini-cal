@@ -37,6 +37,7 @@ specifiers:
   unplugin-vue-components: ^0.23.0
   vue: ^3.0.0
   vue-loader: ^17.0.0
+  vuex: ^4.1.0
   webpack: 5.69.0
 
 dependencies:
@@ -58,6 +59,7 @@ dependencies:
   '@tarojs/shared': 3.6.1
   '@tarojs/taro': 3.6.1_vue@3.2.47
   vue: 3.2.47
+  vuex: 4.1.0_vue@3.2.47
 
 devDependencies:
   '@babel/core': 7.20.12
@@ -2786,6 +2788,10 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.2.47
       '@vue/shared': 3.2.47
+
+  /@vue/devtools-api/6.5.0:
+    resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
+    dev: false
 
   /@vue/reactivity-transform/3.2.47:
     resolution: {integrity: sha512-m8lGXw8rdnPVVIdIFhf0LeQ/ixyHkH5plYuS83yop5n7ggVJU+z5v0zecwEnX7fa7HNLBhh2qngJJkxpwEEmYA==}
@@ -13152,6 +13158,15 @@ packages:
       '@vue/runtime-dom': 3.2.47
       '@vue/server-renderer': 3.2.47_vue@3.2.47
       '@vue/shared': 3.2.47
+    dev: false
+
+  /vuex/4.1.0_vue@3.2.47:
+    resolution: {integrity: sha512-hmV6UerDrPcgbSy9ORAtNXDr9M4wlNP4pEFKye4ujJF8oqgFFuxDCdOLS3eNoRTtq5O3hoBDh9Doj1bQMYHRbQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.5.0
+      vue: 3.2.47
     dev: false
 
   /w3c-hr-time/1.0.2:

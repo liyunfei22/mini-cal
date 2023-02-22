@@ -75,6 +75,6 @@ function setSelected (index) {
 }
 
 .tab-bar-item cover-view {
-  font-size: 20px;
+  font-size: 24px;
 }
 </style>

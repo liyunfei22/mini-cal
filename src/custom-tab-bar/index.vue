@@ -1,16 +1,15 @@
 <template>
-  <cover-view class="tab-bar">
-    <cover-view class="tab-bar-border"></cover-view>
-      <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item" @tap="switchTab(index, item.pagePath)">
-        <cover-view :style="{ color: selected === index ? selectedColor : color }">{{item.text}}</cover-view>
-      </cover-view>
-  </cover-view>
+  <nut-tabbar @tab-switch="tabSwitch">
+     <nut-tabbar-item tab-title="标签" :icon="Home"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="标签" :icon="Category"> </nut-tabbar-item>
+  </nut-tabbar>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import Taro from '@tarojs/taro'
 import { computed }  from 'vue'
 import { useStore } from 'vuex'
+import { Home, Category } from '@nutui/icons-vue-taro';
 
 const store = useStore()
 const selected = computed(() => store.getters.getSelected)
@@ -28,7 +27,7 @@ const list = [
   }
 ]
 
-function switchTab(index, url) {
+function tabSwitch(index, url) {
   setSelected(index)
   Taro.switchTab({ url })
 }

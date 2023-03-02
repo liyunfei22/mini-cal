@@ -13,7 +13,7 @@
     <view class="feed-card">
       <view class="feed-card__title">
         <text>饲料情况</text>
-        <nut-button size="small" @click="show = true" type="primary">添加饲料</nut-button>
+        <nut-button size="small" type="primary">添加饲料</nut-button>
       </view>
       <view class="feed-card__body">
         <div v-for="item in list" :key="item" class="feed-item">
@@ -29,11 +29,6 @@
         </div>
         <nut-empty v-if="!list.length" description="无数据"></nut-empty>
       </view>
-      <nut-popup position="bottom" v-model:visible="show">
-        <nut-picker v-model="popupValue" :columns="columns" title="请选择城市" @confirm="popupConfirm" @cancel="show = false">
-          <nut-button block type="primary">永远有效</nut-button>
-        </nut-picker>
-      </nut-popup>
     </view>
   </scroll-view>
 </template>
@@ -42,25 +37,7 @@
 import { reactive, ref } from 'vue';
 import beefCard from '../../components/beef-card.vue';
 import { Del } from '@nutui/icons-vue-taro';
-const show = ref(false)
-const popupDesc = ref()
-const popupValue = ref();
-const columns = ref([
-  { text: '南京市', value: 'NanJing' },
-  { text: '无锡市', value: 'WuXi' },
-  { text: '海北藏族自治区', value: 'ZangZu' },
-  { text: '北京市', value: 'BeiJing' },
-  { text: '连云港市', value: 'LianYunGang' },
-  { text: '浙江市', value: 'ZheJiang' },
-  { text: '江苏市', value: 'JiangSu' }
-]);
 
-const popupConfirm = ({ selectedValue, selectedOptions }) =>
-{
-  console.log(selectedValue)
-  popupDesc.value = selectedOptions.map((val: any) => val.text).join(',')
-  show.value = false
-}
 const state = reactive({
   name: '',
   age: '',
@@ -110,11 +87,9 @@ const list = ref([1, 2])
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #eee;
-
     &:last-child {
       border: none;
     }
-
     .nut-input {
       padding: 10px;
     }

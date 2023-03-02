@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BeefCard: typeof import('./src/components/beef-card.vue')['default']
+    FeedCard: typeof import('./src/components/feed-card.vue')['default']
     NutButton: typeof import('@nutui/nutui-taro')['Button']
     NutEmpty: typeof import('@nutui/nutui-taro')['Empty']
     NutForm: typeof import('@nutui/nutui-taro')['Form']

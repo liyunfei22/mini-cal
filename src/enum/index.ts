@@ -3,6 +3,11 @@ export interface ListItem{
   text: string;
   value: number | string
 }
+export interface FeedItem{
+  name: string;
+  id: number
+}
+
 export const TEMPERATURE_LIST: ListItem[] = [
   { text: "-20～-10", value: -2 },
   { text: "-10～0", value: -1 },
@@ -28,4 +33,12 @@ export const INCREASE_LIST: ListItem[] = [
     text: "3斤",
     value: 3,
   },
+];
+
+export const FEED_LIST: FeedItem[] = [
+  { name: "青草", id: 1 },
+  { name: "玉米", id: 2 },
+  { name: "精料", id: 3 },
+  { name: "混料", id: 4 },
+  { name: "水", id: 5 },
 ];

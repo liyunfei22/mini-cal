@@ -10,13 +10,14 @@ declare module '@vue/runtime-core' {
     BeefCard: typeof import('./src/components/beef-card.vue')['default']
     FeedCard: typeof import('./src/components/feed-card.vue')['default']
     NutButton: typeof import('@nutui/nutui-taro')['Button']
+    NutCheckbox: typeof import('@nutui/nutui-taro')['Checkbox']
+    NutCollapse: typeof import('@nutui/nutui-taro')['Collapse']
+    NutCollapseItem: typeof import('@nutui/nutui-taro')['CollapseItem']
     NutEmpty: typeof import('@nutui/nutui-taro')['Empty']
     NutForm: typeof import('@nutui/nutui-taro')['Form']
     NutFormItem: typeof import('@nutui/nutui-taro')['FormItem']
     NutInput: typeof import('@nutui/nutui-taro')['Input']
     NutPicker: typeof import('@nutui/nutui-taro')['Picker']
     NutPopup: typeof import('@nutui/nutui-taro')['Popup']
-    NutTabbar: typeof import('@nutui/nutui-taro')['Tabbar']
-    NutTabbarItem: typeof import('@nutui/nutui-taro')['TabbarItem']
   }
 }

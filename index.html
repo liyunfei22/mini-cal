@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .o-grid__item {
+      container-type: inline-size;
+    }
+
+    @container (min-width: 400px) {
+      .c-article {
+        /* 使文章平铺的样式 */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="o-grid">
+    <div class="o-grid__item">
+      <article class="c-article">
+        <!-- 内容 -->
+      </article>
+    </div>
+    <div class="o-grid__item">
+      <article class="c-article">
+        <!-- 内容 -->
+      </article>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,7 +1,13 @@
 import { createStore } from 'vuex'
 
 const state = {
-  selected: 0
+  selected: 0,
+  userInfo: {
+    avatarUrl: '',
+    nickName: '',
+    gender: 0
+  },
+  appId: ""
 }
 
 const mutations = {

@@ -2,19 +2,17 @@
   <cover-view class="tab-bar">
     <cover-view class="tab-bar-border"></cover-view>
       <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item" @tap="switchTab(index, item.pagePath)">
-        <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" />
-        <cover-view :style="{ color: selected === index ? selectedColor : color }">{{item.text}}</cover-view>
+        <cover-image :src="tabStore.tabIndex === index ? item.selectedIconPath : item.iconPath" />
+        <cover-view :style="{ color: tabStore.tabIndex === index ? selectedColor : color }">{{item.text}}</cover-view>
       </cover-view>
   </cover-view>
 </template>
 
 <script lang="ts" setup>
-import Taro from '@tarojs/taro'
-import { computed }  from 'vue'
-import { useStore } from 'vuex'
+import Taro from '@tarojs/taro';
+import { useTabStore } from '../stores/index'
 
-const store = useStore()
-const selected = computed(() => store.getters.getSelected)
+const tabStore = useTabStore()
 
 const color = '#000000'
 const selectedColor = '#DC143C'
@@ -38,8 +36,9 @@ function switchTab(index, url) {
   Taro.switchTab({ url })
 }
 
-function setSelected (index) {
-  store.dispatch('setSelected', index)
+function setSelected(index) {
+  
+  tabStore.setTabIndex(index)
 }
 </script>
 

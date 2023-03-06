@@ -8,7 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BeefCard: typeof import('./src/components/beef-card.vue')['default']
-    FeedCard: typeof import('./src/components/feed-card.vue')['default']
     NutButton: typeof import('@nutui/nutui-taro')['Button']
     NutCheckbox: typeof import('@nutui/nutui-taro')['Checkbox']
     NutCollapse: typeof import('@nutui/nutui-taro')['Collapse']
@@ -19,5 +18,6 @@ declare module '@vue/runtime-core' {
     NutInput: typeof import('@nutui/nutui-taro')['Input']
     NutPicker: typeof import('@nutui/nutui-taro')['Picker']
     NutPopup: typeof import('@nutui/nutui-taro')['Popup']
+    NutToast: typeof import('@nutui/nutui-taro')['Toast']
   }
 }

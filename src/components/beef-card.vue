@@ -24,6 +24,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { INCREASE_LIST, TEMPERATURE_LIST, BREED_LIST, ListItem } from '../enum/index'
+
 interface Beef {
   breed: ListItem | null
   temperature: ListItem | null
@@ -71,6 +72,12 @@ const confirm = ({ selectedOptions }) => {
 const cancel = () => {
   pickerShow.value = false
 }
+const getStander = () => {
+
+}
+defineExpose({
+  getStander
+})
 </script>
 <style lang="scss">
 page,
@@ -78,3 +85,5 @@ page,
   --nut-form-item-label-font-size: 28px;
 }
 </style>
+=0.062*B19^0.75+(1.5296+0.00371*B19)*C19
+5.5*B19^0.75+(C19*(168.07-0.16869*B19+0.0001633*B19^2)*(1.12-0.1233*C19))/0.34

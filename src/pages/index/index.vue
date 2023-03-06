@@ -6,25 +6,29 @@
         <text>肉牛情况</text>
       </view>
       <view class="bf-card__body">
-        <beef-card></beef-card>
+        <beef-card ref="beef"></beef-card>
       </view>
     </view>
     <!-- 饲料配比 -->
     <view class="feed-card">
       <view class="feed-card__title">
         <text>饲料情况</text>
-        <nut-button size="small" @click="add" type="primary">添加饲料</nut-button>
+        <div> 
+          <nut-button size="small" class="mr-20" @click="generate" type="primary">生成方案</nut-button>
+          <nut-button size="small" plain @click="add"
+            type="primary">添加饲料</nut-button>
+          </div>
       </view>
       <view class="feed-card__body">
-        <div v-for="(item,index) in selected" :key="item.id" class="feed-item">
+        <div v-for="(item, index) in selected" :key="item.id" class="feed-item">
           <div class="name">{{ item.name }}</div>
           <div class="input">
-            <nut-input v-model="item.weight" type="number"  placeholder="重量（斤）" />
+            <nut-input v-model="item.weight" type="number" placeholder="重量（斤）" />
           </div>
-          <div class="price-input"><nut-input v-model="item.price"  placeholder="价格（元/斤）" type="number" />
+          <div class="price-input"><nut-input v-model="item.price" placeholder="价格（元/斤）" type="number" />
           </div>
           <div>
-            <Del @click="del(index)"/>
+            <Del @click="del(index)" />
           </div>
         </div>
         <nut-empty v-if="!selected.length" description="请选择饲喂的饲料"></nut-empty>
@@ -54,6 +58,7 @@
         </div>
       </nut-popup>
     </view>
+    <nut-toast :msg="toast.msg" :type="toast.type" v-model:visible="toast.show" :cover="true"/>
   </scroll-view>
 </template>
 
@@ -63,6 +68,7 @@ import beefCard from '../../components/beef-card.vue';
 import { Del } from '@nutui/icons-vue-taro';
 import { FeedItem, FEED_LIST } from '../../enum/index'
 import empty from '../../images/empty.png'
+import Taro from '@tarojs/taro';
 
 interface SelectItem extends FeedItem {
   weight: string;
@@ -71,6 +77,17 @@ interface SelectItem extends FeedItem {
 }
 interface UnSelectedItem extends FeedItem {
   choose: boolean
+}
+const toast = reactive({
+  msg: '',
+  type: '',
+  show: false
+})
+
+const openToast = (msg: string, type: string = 'text') => {
+  toast.type = type
+  toast.msg = msg;
+  toast.show = true;
 }
 const show = ref(false)
 const selected = reactive<SelectItem[]>([])
@@ -90,10 +107,26 @@ const confirm = () => {
   const sel = unSelected.value.filter(item => item.choose)
   console.log(sel)
   if (sel.length) {
-    const items = sel.map(item => ({...item, weight: '', price: ''}))
+    const items = sel.map(item => ({ ...item, weight: '', price: '' }))
     selected.push(...items)
   }
   show.value = false
+}
+const beef = ref<InstanceType<typeof beefCard> | null>(null)
+const generate = () => {
+  beef.value?.getStander()
+  console.log('gen')
+  // openToast('error', 'loading')
+  Taro.getUserProfile({
+    desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+    success: (res) => {
+      // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+      console.log(res.userInfo)
+    }
+  })
+  // 空值校验
+  // 计算标准含量
+  // 计算饲料含量
 }
 </script>
 
@@ -192,9 +225,11 @@ const confirm = () => {
     min-height: 516px;
     box-sizing: border-box;
   }
+
   &__item {
     width: 100%;
     overflow: hidden;
+
     &::after {
       content: '';
       position: absolute;
@@ -205,6 +240,7 @@ const confirm = () => {
       background: #eee;
     }
   }
+
   &__inner {
     width: 100%;
     display: flex;
@@ -213,5 +249,8 @@ const confirm = () => {
     justify-content: space-between;
     box-sizing: border-box;
   }
+}
+.mr-20 {
+  margin-right: 20px;
 }
 </style>

@@ -4,5 +4,18 @@
   "setting": {
     "compileHotReLoad": true
   },
-  "libVersion": "2.30.2"
+  "libVersion": "2.26.2",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "登录",
+          "pathName": "pages/login/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

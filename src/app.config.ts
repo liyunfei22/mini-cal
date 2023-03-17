@@ -1,7 +1,8 @@
 export default defineAppConfig({
   pages: [
     'pages/index/index',
-    'pages/my/index'
+    'pages/my/index',
+    'pages/login/index'
   ],
   tabBar: {
     custom: true,

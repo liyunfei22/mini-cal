@@ -13,11 +13,10 @@
     <view class="feed-card">
       <view class="feed-card__title">
         <text>饲料情况</text>
-        <div> 
+        <div>
           <nut-button size="small" class="mr-20" @click="generate" type="primary">生成方案</nut-button>
-          <nut-button size="small" plain @click="add"
-            type="primary">添加饲料</nut-button>
-          </div>
+          <nut-button size="small" plain @click="add" type="primary">添加饲料</nut-button>
+        </div>
       </view>
       <view class="feed-card__body">
         <div v-for="(item, index) in selected" :key="item.id" class="feed-item">
@@ -58,7 +57,7 @@
         </div>
       </nut-popup>
     </view>
-    <nut-toast :msg="toast.msg" :type="toast.type" v-model:visible="toast.show" :cover="true"/>
+    <nut-toast :msg="toast.msg" :type="toast.type" v-model:visible="toast.show" :cover="true" />
   </scroll-view>
 </template>
 
@@ -113,17 +112,22 @@ const confirm = () => {
   show.value = false
 }
 const beef = ref<InstanceType<typeof beefCard> | null>(null)
-const generate = () => {
-  beef.value?.getStander()
-  console.log('gen')
-  // openToast('error', 'loading')
+const generate = async () => {
+  // beef.value?.getStander()
   Taro.getUserProfile({
-    desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-    success: (res) => {
-      // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-      console.log(res.userInfo)
-    }
-  })
+  desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+  success: (res) => {
+    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    console.log('userInfo')
+    console.log(res)
+  }
+})
+  // const { authSetting } = await Taro.getSetting()
+  // const { code } = await Taro.login(); // 获取登录的临时凭证
+
+  // console.log('gen', userInfo, authSetting, code)
+  // openToast('error', 'loading')
+
   // 空值校验
   // 计算标准含量
   // 计算饲料含量
@@ -250,6 +254,7 @@ const generate = () => {
     box-sizing: border-box;
   }
 }
+
 .mr-20 {
   margin-right: 20px;
 }
